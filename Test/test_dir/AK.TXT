@@ -1,0 +1,2 @@
+AK,F,1910,Mary,14
+AK,F,1921,Betty,5
