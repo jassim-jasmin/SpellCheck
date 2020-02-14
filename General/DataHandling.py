@@ -62,7 +62,37 @@ class DataHandling:
             print('error in makeUniqNameSet in DataHandling', e)
             return False
 
+    def saveDataFrameToJson(self, df, dirPath) -> bool:
+        """
+        Saving data frame to csv
+        :param df: Data Frame
+        :param dirPath: dir path with file name + extension
+        :return: True if success else False
+        """
+        try:
+            if not df.empty:
+                df.to_csv(dirPath)
+                return True
+            else:
+                return False
+        except Exception as e:
+            print('error in saveDataFrameToJson in DataHandling', e)
+            return False
+
     def makeNameGroupDict(self, directoryHandlingObj, dirPath):
         try:
             nameDataFrame = self.makeUniqNameSet(directoryHandlingObj, dirPath)
+            # print(nameDataFrame[self.inputNameSetHeader[3]] )
+        except Exception as e:
+            print('error in makeNameGroupDict in DataHandling', e)
+            return False
+
+    def readCsvToDF(self, dirPath):
+        try:
+            df = pd.read_csv(dirPath)
+
+            return df
+        except Exception as e:
+            print('error in readCsvToDF in DataHandling', e)
+            return False
 
